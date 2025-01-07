@@ -1,0 +1,115 @@
+Feature: Validação da aplicação +A 
+
+Scenario: CT001 Visualizar a tela de Política e Privacidade
+Dado que o usuário esteja na página inicial do portal de inscrições
+Quando clicar em 'Privacidade'
+Então será redirecionado para a tela 'Política de Privacidade'
+
+Scenario: CT002 Escolher o nível de ensino
+Dado que o usuário escolha o seu nível de ensino
+Quando clicar  na opção 'Selecione uma opção...'
+Então um pop-up deve ser exibido com a orientação 'Por favor, selecione um nível de ensino...'
+
+Scenario: CT003 Interagir com o pop-up - opção 'Selecione uma opção...'
+Dado que o pou-up com a orientação 'Por favor, selecione um nível de ensino...' foi exibido
+Quando o usuário clicar em 'ok'
+Então o pop-up deve ser fechado
+
+Scenario: CT004 Escolher o nível de ensino - opção Graduação
+Dado que o usuário escolha o seu nível de ensino
+Quando selecionar a opção 'Graduação'
+Então deve ser exibido as opções do curso de graduação
+
+Scenario: CT005 Escolher o nível de ensino - opção Pós-Graduação
+Dado que o usuário escolha o seu nível de ensino
+Quando selecionar a opção 'Pós- Graduação'
+Então deve ser exibido as opções do curso de pós graduação
+
+Scenario: CT006 Voltar após selecionar o nível de ensino
+Dado que o usuário escolheu seu nível de ensino (graduação ou pós graduação)
+Quando clicar em 'voltar'
+Então voltará para o momento de escolher o nível de ensino
+
+Scenario: CT007 Avançar sem escolher um curso
+Dado que o usuário escolheu seu nível de ensino (graduação ou pós graduação)
+E não escolheu um curso
+Quando clicar em 'Avançar'
+Então um pop-up deve ser exibido com a orientação 'Por favor, selecione um curso...'
+
+Scenario: CT008 Interagir com o pop-up - quando não selecionou um curso
+Dado que o pou-up com a orientação 'Por favor, selecione um curso...' foi exibido
+Quando o usuário clicar em 'ok'
+Então o pop-up deve ser fechado
+
+Scenario: CT009 Avançar quando escolhe um curso
+Dado que o usuário escolheu o nível de ensino
+E escolheu o curso
+Quando clicar em avançar
+Então será direcionado para a tela de cadastro
+
+Scenario: CT010 Avançar sem preencher os campos obrigatórios do cadastro
+Dado que o usuário esteja na tela de cadastro
+E não preencheu algum campo obrigatório
+Quando clicar em avançar
+Então abaixo do campo obrigatório será exibida a mensagem 'Campo obrigatório'
+
+Scenario: CT011 Avançar quando preenche todos os campos obrigatórios do cadastro
+Dado que o usuário preencheu todos os dados do cadastro
+Quando clicar em avançar
+Então será direcionado para a tela que informará seu usuário e senha
+
+Scenario: CT012 Voltar da tela de cadastro
+Dado que o usuário esteja na tela de cadastro
+Quando clicar em 'Voltar'
+Então deverá voltar para a tela de seleção de curso
+
+Scenario: CT013 Marcar o checkbox 'Possui alguma deficiência' na tela de cadastro
+Dado que o usuário marcou o checkbox 'Possui alguma deficiência'
+Então deve ser aberto um icampo 'Qual deficiência' para que possa ser preenchido
+
+Scenario: CT014 Preencher o campo 'Celular' com menos de 10 caracteres na tela de cadastro
+Dado que o usuário preencha o campo Celular com menos de 10 caracteres
+Então deve ser exibida a mensagem 'Devem ser informados no mínimo 10 caracteres'
+
+Scenario: CT015 Preencher o campo 'Celular' com mais de 15 caracteres na tela de cadastro
+Dado que o usuário preencha o campo Celular com mais de 15 caracteres
+Então deve ser exibida a mensagem 'Devem ser informados no máximo 15 caracteres'
+
+Scenario: CT016 Preencher o campo 'Telefone' com menos de 10 caracteres na tela de cadastro
+Dado que o usuário preencha o campo Telefone com menos de 10 caracteres
+Então deve ser exibida a mensagem 'Devem ser informados no mínimo 10 caracteres'
+
+Scenario: CT017 Preencher o campo 'Telefone' com mais de 15 caracteres na tela de cadastro
+Dado que o usuário preencha o campo Telefone com mais de 15 caracteres
+Então deve ser exibida a mensagem 'Devem ser informados no máximo 15 caracteres'
+
+Scenario: CT018 Acessar a tela de autenticação
+Dado que o usuário esteja na tela que informe seus dados de acesso
+Quando clicar em 'Acessar área do candidato'
+Então será direcionado para a tela de autenticação
+
+Scenario: CT019 Clicar em login na tela de autenticação sem preencher os dados
+Dado que o usuário esteja na tela de autenticação
+E não preencheu nenhum campo
+Quando clicar em 'Login'
+Então será informado que senha e usuário são inválidos
+
+Scenario: CT020 Recuperar usuário na tela de autenticação
+Dado que o usuário esteja na tela de autenticação
+Quando clicar em 'Recuperar usuário'
+Então receberá uma mensagem para verificar o email
+
+Scenario: CT021 Recuperar senha na tela de autenticação
+Dado que o usuário esteja na tela de autenticação
+Quando clicar em 'Redefinir senha'
+Então receberá uma mensagem para verificar o email
+
+Scenario: CT022 Voltar para a tela de autenticação após ter recuperado usuário ou redefinido a senha
+Dado que o usuário recuperou o usuário ou redefiniu a senha
+Quando clicar em 'Voltar para a Home'
+Então voltará para a tela de autenticação para preencher usuário e senha
+
+Scenario: CT023 Visualizar as inscrições
+Dado que o usuário esteja na área do candidato
+Quando clicar em 'Minhas inscrições'
+Então será direcionado para onde se encontra as incrições
